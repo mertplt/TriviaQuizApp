@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         }
         sender.configuration = cfg
         
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
         
         if quizMangager.index == quizMangager.maxQuestion - 1 {
             performSegue(withIdentifier: "goToResult", sender: self)
@@ -77,12 +77,7 @@ class ViewController: UIViewController {
         QuestionTextView.layer.cornerRadius = 15
         quizMangager.delegate = self
         quizMangager.performRequest()
-        
-        
-        
-        
-        
-        
+
     }
     
     
@@ -114,7 +109,7 @@ extension ViewController : QuizManagerDelegate{
             
             let generatedValue = Array(allOptions.shuffled().prefix(4))
 //            print(generatedValue)
-//            print(quiz.correctAnswer)
+            print(quiz.correctAnswer)
 
             let btns: [UIButton] = [ChoiceButton1, ChoiceButton2, ChoiceButton3, ChoiceButton4]
             for (str, btn) in zip(generatedValue, btns) {
